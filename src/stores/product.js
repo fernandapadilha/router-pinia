@@ -10,6 +10,18 @@ export const useProductStore = defineStore('product', () => {
     {id: 5, name: 'Trento', price: 3, qty: 2000}
   ])
 
-  
-  return { products }
+  function getProductById(id) {
+    // Modelo universal
+    for (let product of products.value) {
+      if (product.id == id) {
+        return product
+      }
+    }
+    return {}
+
+    // Modelo javaScript
+    // return products.value.find((product) => product.id == id)
+  }
+
+  return { products, getProductById }
 })
